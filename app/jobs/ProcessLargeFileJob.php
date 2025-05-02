@@ -27,7 +27,7 @@ class ProcessLargeFileJob implements ShouldQueue
         $consumer = new NewConsumerDTO (
             $this->line->authenticated_entity->consumer_id->uuid
         );
-        
+        logger(json_encode($consumer));
 
     }
 }
