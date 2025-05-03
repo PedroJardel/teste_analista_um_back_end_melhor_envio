@@ -8,6 +8,7 @@ class Request extends Model
 {
     protected $fillable = [
         'method',
+        'url',
         'status_code',
         'consumer_id',
         'service_id',

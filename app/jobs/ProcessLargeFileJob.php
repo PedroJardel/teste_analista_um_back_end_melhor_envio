@@ -3,7 +3,10 @@
 namespace App\Jobs;
 
 use App\Http\DTOs\NewConsumerDTO;
-use App\Models\Consumer;
+use App\Http\DTOs\NewGatewayServiceDTO;
+use App\Http\DTOs\NewRequestDTO;
+use App\Http\repositories\interfaces\ImportRequestFileRepository;
+use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 
@@ -27,7 +30,27 @@ class ProcessLargeFileJob implements ShouldQueue
         $consumer = new NewConsumerDTO (
             $this->line->authenticated_entity->consumer_id->uuid
         );
-        logger(json_encode($consumer));
-
+        $gatewayService = new NewGatewayServiceDTO(
+            $this->line->service->id,
+            $this->line->service->host,
+            $this->line->service->port,
+            $this->line->service->protocol,
+            $this->line->service->name,
+            Carbon::createFromTimestamp($this->line->service->created_at),
+        );
+        $request = new NewRequestDTO(
+            $this->line->request->method,
+            $this->line->request->url,
+            $this->line->response->status,
+            $consumer->id,
+            $gatewayService->id,
+            $this->line->route->id,
+            $this->line->client_ip,
+            $this->line->latencies->proxy,
+            $this->line->latencies->gateway,
+            $this->line->latencies->request,
+        );
+        $importRequestFileRepository = app(ImportRequestFileRepository::class);
+        $importRequestFileRepository->add($consumer, $gatewayService, $request);
     }
 }

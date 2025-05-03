@@ -10,7 +10,7 @@ class ConsumerEloquentRepository implements ConsumerRepository
 {
     public function add(NewConsumerDTO $consumer): Consumer
     {
-        if(!$this->consumerExists($consumer)) {
+        if(!$this->consumerNotExists($consumer)) {
             throw new Exception('This Consumer already exists', 422);
         }
         return Consumer::create($consumer->toArray());
@@ -21,7 +21,7 @@ class ConsumerEloquentRepository implements ConsumerRepository
         return Consumer::find($id);
     }
 
-    private function consumerExists(NewConsumerDTO $newConsumer): bool
+    public function consumerNotExists(NewConsumerDTO $newConsumer): bool
     {
         $consumer = $this->consumerById($newConsumer->id);
 

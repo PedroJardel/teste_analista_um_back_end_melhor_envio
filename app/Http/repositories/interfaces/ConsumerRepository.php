@@ -9,4 +9,5 @@ interface ConsumerRepository
 {
     public function add(NewConsumerDTO $consumer): Consumer;
     public function consumerById(string $id): Consumer|null;
+    public function consumerNotExists(NewConsumerDTO $newConsumer): bool;
 }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('method');
             $table->string('url');
-            $table->string('status_code');
+            $table->integer('status_code');
             $table->string('consumer_id');
             $table->string('service_id');
             $table->string('route_id');
@@ -24,8 +24,8 @@ return new class extends Migration
             $table->integer('latency_gateway');
             $table->integer('latency_request');
 
-            $table->foreign('consumer_id')->references('id')->on('consumers')->cascadeOnDelete();
-            $table->foreign('service_id')->references('id')->on('services')->cascadeOnDelete();
+            $table->foreign('consumer_id')->references('id')->on('consumers')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('service_id')->references('id')->on('services')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
@@ -34,6 +34,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('request');
+        Schema::table('requests', function (Blueprint $table) {
+            $table->dropForeign(['consumer_id']);
+            $table->dropForeign(['service_id']);
+        });
+
+        Schema::dropIfExists('requests');
     }
 };

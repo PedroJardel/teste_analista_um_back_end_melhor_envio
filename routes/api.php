@@ -10,6 +10,8 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::post('/send-file', ReceiveRequestsLogController::class);
+Route::post('/requests/import', ReceiveRequestsLogController::class);
 Route::post('/consumer', NewConsumerController::class);
 Route::post('/gatewayService', NewGatewayServiceController::class);
+Route::get('/requests/export/consumer/{consumer}', NewGatewayServiceController::class);
+Route::get('/requests/export/gatewayService/{gatewayService}', NewGatewayServiceController::class);

@@ -6,7 +6,6 @@ use App\Http\DTOs\NewGatewayServiceDTO;
 use App\Http\repositories\interfaces\GatewayServiceRepository;
 use App\Models\GatewayService;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class NewGatewayService
 {

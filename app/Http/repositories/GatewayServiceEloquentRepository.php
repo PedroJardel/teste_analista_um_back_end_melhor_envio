@@ -11,7 +11,7 @@ class GatewayServiceEloquentRepository implements GatewayServiceRepository
 {
     public function add(NewGatewayServiceDTO $newGatewayService): GatewayService
     {
-        if(!$this->gatewayServiceExists($newGatewayService)) {
+        if(!$this->gatewayServiceNotExists($newGatewayService)) {
             throw new Exception('This GatewayService already exists', 422);
         }
         return GatewayService::create($newGatewayService->toArray());
@@ -22,7 +22,7 @@ class GatewayServiceEloquentRepository implements GatewayServiceRepository
         return GatewayService::find($id);
     }
 
-    private function gatewayServiceExists(NewGatewayServiceDTO $newGatewayService): bool
+    public function gatewayServiceNotExists(NewGatewayServiceDTO $newGatewayService): bool
     {
         $gatewayService = $this->gatewayServiceById($newGatewayService->id);
 

@@ -8,4 +8,5 @@ interface GatewayServiceRepository
 {
     public function add(NewGatewayServiceDTO $newGatewayService): GatewayService;
     public function gatewayServiceById(string $id): GatewayService|null;
+    public function gatewayServiceNotExists(NewGatewayServiceDTO $newGatewayService): bool;
 }
