@@ -3,6 +3,7 @@
 use App\Http\Controllers\Consumer\NewConsumerController;
 use App\Http\Controllers\GatewayService\NewGatewayServiceController;
 use App\Http\Controllers\ReceiveRequestsLogController;
+use App\Http\Controllers\Request\AverageTimeLatenciesRequestController;
 use App\Http\Controllers\Request\ExportRequestsByConsumerCsvController;
 use App\Http\Controllers\Request\ExportRequestsByGatewayServiceCsvController;
 use Illuminate\Http\Request;
@@ -17,3 +18,4 @@ Route::post('/consumer', NewConsumerController::class);
 Route::post('/gatewayService', NewGatewayServiceController::class);
 Route::get('/requests/export/consumer/{consumer}', ExportRequestsByConsumerCsvController::class);
 Route::get('/requests/export/gatewayService/{gatewayService}', ExportRequestsByGatewayServiceCsvController::class);
+Route::get('/requests/export/averageLatencies', AverageTimeLatenciesRequestController::class);

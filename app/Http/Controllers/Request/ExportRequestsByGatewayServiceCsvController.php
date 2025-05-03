@@ -23,7 +23,7 @@ class ExportRequestsByGatewayServiceCsvController extends Controller
                 'Content-Type' => 'text/csv',
             ]);
         } catch (Exception $exception) {
-            Log::error('ReceiveRequestLogController.invoke', [
+            Log::error('ExportRequestsByGatewayServiceCsvController.invoke', [
                 'message' => $exception->getMessage(),
                 'line' => $exception->getLine(),
                 'file' => $exception->getFile(),

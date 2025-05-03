@@ -3,28 +3,28 @@
 namespace App\Http\Controllers\Request;
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\Request\ExportRequestsByConsumerCsvService;
-use App\Models\Consumer;
+use App\Http\Services\Request\AverageTimeLatenciesRequestService;
+use App\Models\GatewayService;
 use Exception;
 use Illuminate\Support\Facades\Log;
 
-class ExportRequestsByConsumerCsvController extends Controller
+class AverageTimeLatenciesRequestController extends Controller
 {
-    public function __construct(private ExportRequestsByConsumerCsvService $exportRequestsByConsumerCsvService)
+    public function __construct(private AverageTimeLatenciesRequestService $averageTimeLatenciesRequestService)
     {
     }
 
-    public function __invoke(Consumer $consumer)
+    public function __invoke()
     {
-        try {
-            $requestCsv = $this->exportRequestsByConsumerCsvService->exportCsv($consumer);
-            return response()->streamDownload(function () use ($requestCsv){
-                echo $requestCsv->toString();
+        try{
+            $averageLatenciesTimeCsv = $this->averageTimeLatenciesRequestService->averageTimeLatencies();
+            return response()->streamDownload(function () use ($averageLatenciesTimeCsv){
+                echo $averageLatenciesTimeCsv->toString();
             }, 'consumer_requests_report.csv', [
                 'Content-Type' => 'text/csv',
             ]);
         } catch (Exception $exception) {
-            Log::error('ExportRequestsByConsumerCsvController.invoke', [
+            Log::error('AverageTimeLatenciesRequestController.invoke', [
                 'message' => $exception->getMessage(),
                 'line' => $exception->getLine(),
                 'file' => $exception->getFile(),

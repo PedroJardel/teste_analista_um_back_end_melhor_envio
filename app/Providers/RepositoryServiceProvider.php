@@ -2,11 +2,13 @@
 
 namespace App\Providers;
 
+use App\Http\repositories\AverageTimeLatenciesRequestEloquentRepository;
 use App\Http\repositories\ConsumerEloquentRepository;
 use App\Http\repositories\ExportRequestsByConsumerCsvEloquentRepository;
 use App\Http\repositories\ExportRequestsByGatewayServiceCsvEloquentRepository;
 use App\Http\repositories\GatewayServiceEloquentRepository;
 use App\Http\repositories\ImportRequestFileEloquentRepository;
+use App\Http\repositories\interfaces\AverageTimeLatenciesRequestRepository;
 use App\Http\repositories\interfaces\ConsumerRepository;
 use App\Http\repositories\interfaces\ExportRequestsByConsumerCsvRepository;
 use App\Http\repositories\interfaces\ExportRequestsByGatewayServiceCsvRepository;
@@ -21,6 +23,7 @@ class RepositoryServiceProvider extends ServiceProvider
         GatewayServiceRepository::class => GatewayServiceEloquentRepository::class,
         ImportRequestFileRepository::class => ImportRequestFileEloquentRepository::class,
         ExportRequestsByConsumerCsvRepository::class => ExportRequestsByConsumerCsvEloquentRepository::class,
-        ExportRequestsByGatewayServiceCsvRepository::class => ExportRequestsByGatewayServiceCsvEloquentRepository::class
+        ExportRequestsByGatewayServiceCsvRepository::class => ExportRequestsByGatewayServiceCsvEloquentRepository::class,
+        AverageTimeLatenciesRequestRepository::class => AverageTimeLatenciesRequestEloquentRepository::class,
     ];
 }
