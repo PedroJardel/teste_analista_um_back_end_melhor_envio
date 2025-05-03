@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\NewGatewayServiceRequest;
 use App\Http\Services\GatewayService\NewGatewayService;
 use Exception;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 
 class NewGatewayServiceController extends Controller
@@ -28,7 +27,7 @@ class NewGatewayServiceController extends Controller
                 [
                     'message' => $exception->getMessage()
                 ],
-                Response::HTTP_INTERNAL_SERVER_ERROR
+                $exception->getCode()
             );
         }
     }

@@ -7,4 +7,5 @@ use App\Models\GatewayService;
 interface GatewayServiceRepository 
 {
     public function add(NewGatewayServiceDTO $newGatewayService): GatewayService;
+    public function gatewayServiceById(string $id): GatewayService|null;
 }

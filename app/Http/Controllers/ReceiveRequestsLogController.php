@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReceiveLogRequest;
 use App\Http\Services\ReceiveRequestsLogService;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class ReceiveRequestsLogController extends Controller
@@ -13,14 +13,15 @@ class ReceiveRequestsLogController extends Controller
     {
 
     }
-    public function __invoke(Request $request)
+    public function __invoke(ReceiveLogRequest $request)
     {
         try {
-            if (!$request->file('log')) {
-                throw new Exception("Logs file not found", 404);
+            $fileMimeType = $request->validated('file')->getClientMimeType();
+            if( $fileMimeType !== 'text/plain') {
+                throw new Exception('mimteType is not text/plain', 422);
             }
-            
-            $path = $request->file('log')->store('logs', 'local');
+
+            $path = $request->validated('file')->store('logs', 'local');
             $this->receiveRequestsLogService->readFile($path);
 
             return response()->json(['message' => 'Processing...'], 200);

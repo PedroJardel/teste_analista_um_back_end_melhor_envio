@@ -15,7 +15,7 @@ class NewConsumerController extends Controller
     public function __invoke(NewConsumerRequest $request)
     {
         try {
-            $consumer = $this->newConsumerService->__invoke($request);
+            $consumer = $this->newConsumerService->__invoke($request->validated());
             return response()->json($consumer, 200);
         } catch (Exception $exception) {
             Log::error('ReceiveRequestLogController.invoke', [

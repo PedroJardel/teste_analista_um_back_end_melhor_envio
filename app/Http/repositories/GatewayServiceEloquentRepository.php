@@ -6,15 +6,13 @@ use App\Http\DTOs\NewGatewayServiceDTO;
 use App\Http\repositories\interfaces\GatewayServiceRepository;
 use App\Models\GatewayService;
 use Exception;
-use Illuminate\Database\QueryException;
-use PhpParser\Node\Expr\BinaryOp\BooleanOr;
 
 class GatewayServiceEloquentRepository implements GatewayServiceRepository
 {
     public function add(NewGatewayServiceDTO $newGatewayService): GatewayService
     {
         if(!$this->gatewayServiceExists($newGatewayService)) {
-            throw new Exception('GatewayService já cadastrado');
+            throw new Exception('This GatewayService already exists', 422);
         }
         return GatewayService::create($newGatewayService->toArray());
     }
