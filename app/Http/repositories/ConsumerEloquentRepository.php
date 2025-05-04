@@ -1,31 +1,33 @@
 <?php
+
 namespace App\Http\repositories;
 
 use App\Http\DTOs\NewConsumerDTO;
 use App\Http\repositories\interfaces\ConsumerRepository;
 use App\Models\Consumer;
-use Exception;
+use DomainException;
 
 class ConsumerEloquentRepository implements ConsumerRepository
 {
     public function add(NewConsumerDTO $consumer): Consumer
     {
-        if(!$this->consumerNotExists($consumer)) {
-            throw new Exception('This Consumer already exists', 422);
+        if (!$this->consumerNotExists($consumer)) {
+            throw new DomainException('This Consumer already exists', 422);
         }
         return Consumer::create($consumer->toArray());
     }
 
     public function consumerById(string $id): Consumer|null
     {
-        return Consumer::find($id);
+            $consumer = Consumer::find($id);
+            return $consumer;
     }
 
     public function consumerNotExists(NewConsumerDTO $newConsumer): bool
     {
         $consumer = $this->consumerById($newConsumer->id);
 
-        if($consumer !== null) {
+        if (!empty($consumer)) {
             return false;
         }
         return true;
