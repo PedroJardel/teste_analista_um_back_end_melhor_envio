@@ -7,7 +7,7 @@ use App\Http\DTOs\NewGatewayServiceDTO;
 use App\Http\DTOs\NewRequestDTO;
 use App\Models\Request;
 
-interface ImportRequestFileRepository
+interface RequestRepository
 {
     public function add(NewConsumerDTO $newConsumer, NewGatewayServiceDTO $newGatewayService, NewRequestDTO $newRequest);
     public function requestById(string $id): Request|null;

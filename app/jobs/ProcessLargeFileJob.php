@@ -5,7 +5,7 @@ namespace App\Jobs;
 use App\Http\DTOs\NewConsumerDTO;
 use App\Http\DTOs\NewGatewayServiceDTO;
 use App\Http\DTOs\NewRequestDTO;
-use App\Http\repositories\interfaces\ImportRequestFileRepository;
+use App\Http\repositories\interfaces\RequestRepository;
 use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -50,7 +50,7 @@ class ProcessLargeFileJob implements ShouldQueue
             $this->line->latencies->gateway,
             $this->line->latencies->request,
         );
-        $importRequestFileRepository = app(ImportRequestFileRepository::class);
-        $importRequestFileRepository->add($consumer, $gatewayService, $request);
+        $requestRepository = app(RequestRepository::class);
+        $requestRepository->add($consumer, $gatewayService, $request);
     }
 }

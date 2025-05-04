@@ -6,6 +6,7 @@ use App\Http\Controllers\ReceiveRequestsLogController;
 use App\Http\Controllers\Request\AverageTimeLatenciesRequestController;
 use App\Http\Controllers\Request\ExportRequestsByConsumerCsvController;
 use App\Http\Controllers\Request\ExportRequestsByGatewayServiceCsvController;
+use App\Http\Controllers\Request\NewRequestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/requests/import', ReceiveRequestsLogController::class);
+Route::post('/requests/create', NewRequestController::class);
 Route::post('/consumer', NewConsumerController::class);
 Route::post('/gatewayService', NewGatewayServiceController::class);
 Route::get('/requests/export/consumer/{consumer}', ExportRequestsByConsumerCsvController::class);

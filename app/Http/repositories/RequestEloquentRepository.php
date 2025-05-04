@@ -6,7 +6,7 @@ use App\Http\DTOs\NewGatewayServiceDTO;
 use App\Http\DTOs\NewRequestDTO;
 use App\Http\repositories\interfaces\ConsumerRepository;
 use App\Http\repositories\interfaces\GatewayServiceRepository;
-use App\Http\repositories\interfaces\ImportRequestFileRepository;
+use App\Http\repositories\interfaces\RequestRepository;
 use App\Models\Consumer;
 use App\Models\GatewayService;
 use App\Models\Request;
@@ -14,7 +14,7 @@ use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class ImportRequestFileEloquentRepository implements ImportRequestFileRepository
+class RequestEloquentRepository implements RequestRepository
 {
     public function __construct(private ConsumerRepository $consumerRepository, private GatewayServiceRepository $gatewayServiceRepository){}
     public function add(NewConsumerDTO $newConsumer, NewGatewayServiceDTO $newGatewayService, NewRequestDTO $newRequest)
