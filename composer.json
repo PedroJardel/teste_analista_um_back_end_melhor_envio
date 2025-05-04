@@ -56,6 +56,12 @@
         "test": [
             "@php artisan config:clear --ansi",
             "@php artisan test"
+        ],
+        "build": [
+            "docker compose up -d --build",
+            "@php artisan migrate",
+            "@php artisan serve",
+            "@php artisan test"
         ]
     },
     "extra": {
