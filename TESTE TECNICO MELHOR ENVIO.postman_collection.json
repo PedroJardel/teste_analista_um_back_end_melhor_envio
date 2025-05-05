@@ -64,12 +64,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{url_docker}}/api/consumer",
+					"raw": "{{url_docker}}/consumer",
 					"host": [
 						"{{url_docker}}"
 					],
 					"path": [
-						"api",
 						"consumer"
 					]
 				}
@@ -130,12 +129,11 @@
 					}
 				},
 				"url": {
-					"raw": "{{url_docker}}/api/gatewayService",
+					"raw": "{{url_docker}}/gatewayService",
 					"host": [
 						"{{url_docker}}"
 					],
 					"path": [
-						"api",
 						"gatewayService"
 					]
 				}
@@ -148,16 +146,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url_docker}}/api/requests/export/consumer/22143d4c-c32a-3461-a31d-a5e56783698d",
+					"raw": "{{url_local}}/requests/export/consumer/beceaa24-823b-3bf9-9ae6-c8dada26b264",
 					"host": [
-						"{{url_docker}}"
+						"{{url_local}}"
 					],
 					"path": [
-						"api",
 						"requests",
 						"export",
 						"consumer",
-						"22143d4c-c32a-3461-a31d-a5e56783698d"
+						"beceaa24-823b-3bf9-9ae6-c8dada26b264"
 					]
 				}
 			},
@@ -169,16 +166,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url_docker}}/api/requests/export/gatewayService/c3e86413-648a-3552-90c3-b13491ee07d6",
+					"raw": "{{url_local}}/requests/export/gatewayService/eb1ce287-5797-3e45-b9a6-e6d51691257e",
 					"host": [
-						"{{url_docker}}"
+						"{{url_local}}"
 					],
 					"path": [
-						"api",
 						"requests",
 						"export",
 						"gatewayService",
-						"c3e86413-648a-3552-90c3-b13491ee07d6"
+						"eb1ce287-5797-3e45-b9a6-e6d51691257e"
 					]
 				}
 			},
@@ -190,12 +186,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url_docker}}/api/requests/export/averageLatencies",
+					"raw": "{{url_local}}/requests/export/averageLatencies",
 					"host": [
-						"{{url_docker}}"
+						"{{url_local}}"
 					],
 					"path": [
-						"api",
 						"requests",
 						"export",
 						"averageLatencies"
@@ -210,9 +205,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url_docker}}/requests/readFile",
+					"raw": "{{url_local}}/requests/readFile",
 					"host": [
-						"{{url_docker}}"
+						"{{url_local}}"
 					],
 					"path": [
 						"requests",

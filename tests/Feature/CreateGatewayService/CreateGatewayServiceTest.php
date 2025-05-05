@@ -15,7 +15,8 @@ class CreateGatewayServiceTest extends TestCase
 {
     use RefreshDatabase;
     
-    private string $url = 'http://localhost:80/api/gatewayService';
+    private string $urlDocker = 'http://localhost:80/api/gatewayService';
+    private string $urlLocal = 'http://localhost:8000/api/gatewayService';
 
     public function test_expected_exception_for_gatewayService_already_exists_endpoint(): void
     {
@@ -30,11 +31,11 @@ class CreateGatewayServiceTest extends TestCase
             ]
         ];
 
-        $this->postJson($this->url, $data, [
+        $this->postJson($this->urlDocker, $data, [
             'Accept' => 'application/json'
         ]);
 
-        $response = $this->postJson($this->url, $data, [
+        $response = $this->postJson($this->urlDocker, $data, [
             'Accept' => 'application/json'
         ]);
 
@@ -78,7 +79,7 @@ class CreateGatewayServiceTest extends TestCase
                 'protocol' => 'http',
             ]
         ];
-            $response = $this->post($this->url, $data, [
+            $response = $this->post($this->urlDocker, $data, [
                 'Accept' => 'application/json'
             ]);
             $response->assertStatus(200);

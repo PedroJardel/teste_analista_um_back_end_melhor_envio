@@ -7,7 +7,8 @@ use Tests\TestCase;
 class CreateGateWayServiceRequestTest extends TestCase
 {
     use RefreshDatabase;
-    private string $url = 'http://localhost:80/api/gatewayService';
+    private string $urlDocker = 'http://localhost:80/api/gatewayService';
+    private string $urlLocal = 'http://localhost:8000/api/gatewayService';
 
     public function test_semantic_errros_in_request_for_create_gatewayService(): void
     {
@@ -21,7 +22,7 @@ class CreateGateWayServiceRequestTest extends TestCase
             ]
         ];
 
-        $response = $this->postJson($this->url, $data, [
+        $response = $this->postJson($this->urlDocker, $data, [
             'Accept' => 'application/json'
         ]);
 

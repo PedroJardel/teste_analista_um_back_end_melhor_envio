@@ -10,7 +10,8 @@ use Tests\TestCase;
 class CreateRequestTest extends TestCase
 {
     use RefreshDatabase;
-    private string $url = 'http://localhost:80/api/requests/create';
+    private string $urlDocker = 'http://localhost:80/api/requests/create';
+    private string $urlLocal = 'http://localhost:8000/api/requests/create';
 
     public function test_create_request_success(): void
     {
@@ -46,7 +47,7 @@ class CreateRequestTest extends TestCase
             ],
             'client_ip' => '227.161.59.27',
         ];
-        $response = $this->post($this->url, $data, [
+        $response = $this->post($this->urlDocker, $data, [
             'Accept' => 'application/json'
         ]);
         $response->assertStatus(200);

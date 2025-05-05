@@ -13,7 +13,8 @@ use Tests\TestCase;
 class CreateConsumerTest extends TestCase
 {
     use RefreshDatabase;
-    private string $url = 'http://localhost:80/api/consumer';
+    private string $urlDocker = 'http://localhost:80/api/consumer';
+    private string $urlLocal = 'http://localhost:8000/api/consumer';
 
     public function test_expected_exception_for_consumer_already_exists_endpoint(): void
     {
@@ -25,11 +26,11 @@ class CreateConsumerTest extends TestCase
             ]
         ];
 
-        $this->postJson($this->url, $data, [
+        $this->postJson($this->urlDocker, $data, [
             'Accept' => 'application/json'
         ]);
 
-        $response = $this->postJson($this->url, $data, [
+        $response = $this->postJson($this->urlDocker, $data, [
             'Accept' => 'application/json'
         ]);
 
@@ -64,7 +65,7 @@ class CreateConsumerTest extends TestCase
                 ]
             ]
         ];
-        $response = $this->post($this->url, $data, [
+        $response = $this->post($this->urlDocker, $data, [
             'Accept' => 'application/json'
         ]);
         $response->assertStatus(200);

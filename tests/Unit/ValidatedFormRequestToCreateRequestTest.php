@@ -8,7 +8,8 @@ use Tests\TestCase;
 class ValidatedFormRequestToCreateRequestTest extends TestCase
 {
     use RefreshDatabase;
-    private string $url = 'http://localhost:80/api/requests/create';
+    private string $urlDocker = 'http://localhost:80/api/requests/create';
+    private string $urlLocal = 'http://localhost:8000/api/requests/create';
 
     public function  test_semantic_errros_in_request_for_create_request(): void
     {
@@ -39,7 +40,7 @@ class ValidatedFormRequestToCreateRequestTest extends TestCase
             ],
         ];
 
-        $response = $this->postJson($this->url, $data, [
+        $response = $this->postJson($this->urlDocker, $data, [
             'Accept' => 'application/json'
         ]);
 

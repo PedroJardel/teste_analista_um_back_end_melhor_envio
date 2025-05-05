@@ -12,13 +12,14 @@ use Tests\TestCase;
 class ReceiveLogRequestsFileTest extends TestCase
 {
     use RefreshDatabase;
-    private string $url = 'http://localhost:80/api/requests/import';
+    private string $urlDocker = 'http://localhost:80/api/requests/import';
+    private string $urlLocal = 'http://localhost:8000/api/requests/import';
 
     public function test_expected_file_is_required(): void
     {
        $file = '';
 
-       $response = $this->postJson($this->url, ['file' => $file]);
+       $response = $this->postJson($this->urlDocker, ['file' => $file]);
        $response->assertStatus(422)
        ->assertJsonFragment([
             'message' => 'The file field is required.',
@@ -29,7 +30,7 @@ class ReceiveLogRequestsFileTest extends TestCase
     {
        $file = 'Teste de Texto';
 
-       $response = $this->postJson($this->url, ['file' => $file]);
+       $response = $this->postJson($this->urlDocker, ['file' => $file]);
        $response->assertStatus(422)
        ->assertJsonFragment([
             'message' => 'The file field must be a file.',
@@ -40,7 +41,7 @@ class ReceiveLogRequestsFileTest extends TestCase
     {
        $file = UploadedFile::fake()->create('logs_test.img', 100);
 
-       $response = $this->postJson($this->url, ['file' => $file]);
+       $response = $this->postJson($this->urlDocker, ['file' => $file]);
        $response->assertStatus(422)
        ->assertJsonFragment([
             'message' => 'mimteType is not text/plain',
@@ -59,7 +60,7 @@ class ReceiveLogRequestsFileTest extends TestCase
         true
     );
 
-       $response = $this->postJson($this->url, ['file' => $file], [
+       $response = $this->postJson($this->urlDocker, ['file' => $file], [
         'Content-Type' => 'multpart/form-data'
        ]);
 
