@@ -49,7 +49,7 @@ class ReceiveLogRequestsFileTest extends TestCase
 
     public function test_import_file_success(): void
     {
-       $path = Storage::disk('public')->path('/logs/logs_test.txt');
+       $path = Storage::disk('public')->path('logs_test.txt');
 
        $file = new UploadedFile(
         $path,
