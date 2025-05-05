@@ -57,10 +57,12 @@
             "@php artisan config:clear --ansi",
             "@php artisan test"
         ],
-        "build": [
-            "cp .env.example .env",
+        "build-docker": [
+            "composer run post-root-package-install",
             "composer install",
-            "docker compose up -d --build",
+            "docker compose up -d --build"
+        ],
+        "start-app-docker": [
             "@php artisan migrate",
             "@php artisan serve",
             "@php artisan test"
