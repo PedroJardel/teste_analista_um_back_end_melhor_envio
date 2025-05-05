@@ -20,7 +20,6 @@ class ExportRequestsByGatewayServiceCsvEloquentRepository implements ExportReque
             ->chunk(5000, function ($chunked) use (&$requestsCollection) {
                 $requestsCollection = $requestsCollection->merge($chunked);
             });
-            Log::info('Último dado do chunk', [$requestsCollection->count()]);
         } catch (Exception $exception) {
             Log::error('ReceiveRequestLogController.invoke', [
                 'message' => $exception->getMessage(),

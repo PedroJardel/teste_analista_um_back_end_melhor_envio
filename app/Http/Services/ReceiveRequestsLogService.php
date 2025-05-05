@@ -15,9 +15,6 @@ class ReceiveRequestsLogService
 
         while (($line = fgets($request)) !== false) {
             $jobs[] = new ProcessFileLineJob($line);
-            Log::info("job", [
-                "line" => $line
-            ]);
 
             if (count($jobs) >= self::CHUNK_SIZE) {
                 Bus::batch($jobs)->dispatch();
@@ -26,7 +23,7 @@ class ReceiveRequestsLogService
         }
     
         if (!empty($jobs)) {
-            Log::info("leu cedo");
+
             Bus::batch($jobs)->dispatch();
         }
     
