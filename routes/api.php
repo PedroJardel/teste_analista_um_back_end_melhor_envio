@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Consumer\NewConsumerController;
 use App\Http\Controllers\GatewayService\NewGatewayServiceController;
+use App\Http\Controllers\ReadFileController;
 use App\Http\Controllers\ReceiveRequestsLogController;
 use App\Http\Controllers\Request\AverageTimeLatenciesRequestController;
 use App\Http\Controllers\Request\ExportRequestsByConsumerCsvController;
@@ -15,6 +16,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/requests/import', ReceiveRequestsLogController::class);
+Route::get('/requests/readFile', ReadFileController::class);
 Route::post('/requests/create', NewRequestController::class);
 Route::post('/consumer', NewConsumerController::class);
 Route::post('/gatewayService', NewGatewayServiceController::class);

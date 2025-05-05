@@ -15,7 +15,7 @@ class CreateGatewayServiceTest extends TestCase
 {
     use RefreshDatabase;
     
-    private string $url = 'http://localhost:8000/api/gatewayService';
+    private string $url = 'http://localhost:80/api/gatewayService';
 
     public function test_expected_exception_for_gatewayService_already_exists_endpoint(): void
     {

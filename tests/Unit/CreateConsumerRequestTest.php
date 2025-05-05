@@ -7,7 +7,7 @@ use Tests\TestCase;
 class CreateConsumerRequestTest extends TestCase
 {
     use RefreshDatabase;
-    private string $url = 'http://localhost:8000/api/consumer';
+    private string $url = 'http://localhost:80/api/consumer';
 
     public function  test_semantic_errros_in_request_for_create_consumer(): void
     {

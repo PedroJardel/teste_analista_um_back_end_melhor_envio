@@ -7,7 +7,7 @@ use Tests\TestCase;
 class CreateGateWayServiceRequestTest extends TestCase
 {
     use RefreshDatabase;
-    private string $url = 'http://localhost:8000/api/gatewayService';
+    private string $url = 'http://localhost:80/api/gatewayService';
 
     public function test_semantic_errros_in_request_for_create_gatewayService(): void
     {

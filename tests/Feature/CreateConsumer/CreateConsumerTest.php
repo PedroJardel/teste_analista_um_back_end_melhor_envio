@@ -13,7 +13,7 @@ use Tests\TestCase;
 class CreateConsumerTest extends TestCase
 {
     use RefreshDatabase;
-    private string $url = 'http://localhost:8000/api/consumer';
+    private string $url = 'http://localhost:80/api/consumer';
 
     public function test_expected_exception_for_consumer_already_exists_endpoint(): void
     {

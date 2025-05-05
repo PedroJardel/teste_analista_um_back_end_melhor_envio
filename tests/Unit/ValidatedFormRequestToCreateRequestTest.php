@@ -8,7 +8,7 @@ use Tests\TestCase;
 class ValidatedFormRequestToCreateRequestTest extends TestCase
 {
     use RefreshDatabase;
-    private string $url = 'http://localhost:8000/api/requests/create';
+    private string $url = 'http://localhost:80/api/requests/create';
 
     public function  test_semantic_errros_in_request_for_create_request(): void
     {

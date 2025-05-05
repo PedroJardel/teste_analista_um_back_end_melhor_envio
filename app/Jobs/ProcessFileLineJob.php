@@ -7,17 +7,18 @@ use App\Http\DTOs\NewGatewayServiceDTO;
 use App\Http\DTOs\NewRequestDTO;
 use App\Http\repositories\interfaces\RequestRepository;
 use Carbon\Carbon;
+use Illuminate\Bus\Batchable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 
-class ProcessLargeFileJob implements ShouldQueue
+class ProcessFileLineJob implements ShouldQueue
 {
-    use Queueable;
+    use Queueable, Batchable;
 
     /**
      * Create a new job instance.
      */
-    public function __construct(public object $line)
+    public function __construct(public string $line)
     {
         //
     }
@@ -27,28 +28,29 @@ class ProcessLargeFileJob implements ShouldQueue
      */
     public function handle()
     {
+        $line = json_decode(trim($this->line));
         $consumer = new NewConsumerDTO (
-            $this->line->authenticated_entity->consumer_id->uuid
+            $line->authenticated_entity->consumer_id->uuid
         );
         $gatewayService = new NewGatewayServiceDTO(
-            $this->line->service->id,
-            $this->line->service->host,
-            $this->line->service->port,
-            $this->line->service->protocol,
-            $this->line->service->name,
-            Carbon::createFromTimestamp($this->line->service->created_at),
+            $line->service->id,
+            $line->service->host,
+            $line->service->port,
+            $line->service->protocol,
+            $line->service->name,
+            Carbon::createFromTimestamp($line->service->created_at),
         );
         $request = new NewRequestDTO(
-            $this->line->request->method,
-            $this->line->request->url,
-            $this->line->response->status,
+            $line->request->method,
+            $line->request->url,
+            $line->response->status,
             $consumer->id,
             $gatewayService->id,
-            $this->line->route->id,
-            $this->line->client_ip,
-            $this->line->latencies->proxy,
-            $this->line->latencies->gateway,
-            $this->line->latencies->request,
+            $line->route->id,
+            $line->client_ip,
+            $line->latencies->proxy,
+            $line->latencies->gateway,
+            $line->latencies->request,
         );
         $requestRepository = app(RequestRepository::class);
         $requestRepository->add($consumer, $gatewayService, $request);

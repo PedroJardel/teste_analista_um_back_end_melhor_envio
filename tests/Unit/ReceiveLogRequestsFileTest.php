@@ -12,7 +12,7 @@ use Tests\TestCase;
 class ReceiveLogRequestsFileTest extends TestCase
 {
     use RefreshDatabase;
-    private string $url = 'http://localhost:8000/api/requests/import';
+    private string $url = 'http://localhost:80/api/requests/import';
 
     public function test_expected_file_is_required(): void
     {

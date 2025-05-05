@@ -10,7 +10,7 @@ use Tests\TestCase;
 class CreateRequestTest extends TestCase
 {
     use RefreshDatabase;
-    private string $url = 'http://localhost:8000/api/requests/create';
+    private string $url = 'http://localhost:80/api/requests/create';
 
     public function test_create_request_success(): void
     {

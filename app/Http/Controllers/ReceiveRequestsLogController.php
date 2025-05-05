@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ReceiveLogRequest;
 use App\Http\Services\ReceiveRequestsLogService;
+use App\Jobs\ProcessFileJob;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -21,9 +22,8 @@ class ReceiveRequestsLogController extends Controller
             if( $fileMimeType !== 'text/plain') {
                 throw new Exception('mimteType is not text/plain', 422);
             }
-            
             $path = Storage::disk('local')->putFile('logs', $request->validated('file'));
-            $this->receiveRequestsLogService->readFile($path);
+            ProcessFileJob::dispatch($path);
 
             return response()->json(['message' => 'Processing...'], 200);
         } catch (Exception $exception) {
