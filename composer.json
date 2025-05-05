@@ -58,6 +58,8 @@
             "@php artisan test"
         ],
         "build": [
+            "cp .env.example .env",
+            "composer install",
             "docker compose up -d --build",
             "@php artisan migrate",
             "@php artisan serve",
