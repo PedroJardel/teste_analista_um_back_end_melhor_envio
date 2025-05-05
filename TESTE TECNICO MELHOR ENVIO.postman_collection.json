@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "4c107b96-5540-4fe0-a88e-6f172e6947cc",
+		"name": "TESTE TECNICO MELHOR ENVIO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31339213"
+	},
+	"item": [
+		{
+			"name": "IMPORT REQUEST FILE",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/E:/PEDRO/Melhor Envio/Teste Analista I - Backend/logs_test.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url_docker}}/requests/import",
+					"host": [
+						"{{url_docker}}"
+					],
+					"path": [
+						"requests",
+						"import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE CONSUMER",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"request\": {\r\n        \"method\": \"GET\",\r\n        \"uri\": \"\\/\",\r\n        \"url\": \"http:\\/\\/wolf.com\",\r\n        \"size\": 61,\r\n        \"querystring\": [],\r\n        \"headers\": {\r\n            \"accept\": \"*\\/*\",\r\n            \"host\": \"wolf.com\",\r\n            \"user-agent\": \"curl\\/7.37.1\"\r\n        }\r\n    },\r\n    \"upstream_uri\": \"\\/\",\r\n    \"response\": {\r\n        \"status\": 500,\r\n        \"size\": 847,\r\n        \"headers\": {\r\n            \"Content-Length\": \"197\",\r\n            \"via\": \"gateway\\/1.3.0\",\r\n            \"Connection\": \"close\",\r\n            \"access-control-allow-credentials\": \"true\",\r\n            \"Content-Type\": \"application\\/json\",\r\n            \"server\": \"nginx\",\r\n            \"access-control-allow-origin\": \"*\"\r\n        }\r\n    },\r\n    \"authenticated_entity\": {\r\n        \"consumer_id\": {\r\n            \"uuid\": \"fdbb8ab9-53c2-35c3-b0dc-0433d64c0845\"\r\n        }\r\n    },\r\n    \"route\": {\r\n        \"created_at\": 1545521760,\r\n        \"hosts\": \"hilpert.com\",\r\n        \"id\": \"9bb5b399-23b4-3c5a-b92b-2febdbcfa4e4\",\r\n        \"methods\": [\r\n            \"GET\",\r\n            \"POST\",\r\n            \"PUT\",\r\n            \"DELETE\",\r\n            \"PATCH\",\r\n            \"OPTIONS\",\r\n            \"HEAD\"\r\n        ],\r\n        \"paths\": [\r\n            \"\\/\"\r\n        ],\r\n        \"preserve_host\": false,\r\n        \"protocols\": [\r\n            \"http\",\r\n            \"https\"\r\n        ],\r\n        \"regex_priority\": 0,\r\n        \"service\": {\r\n            \"id\": \"a5bf08bd-c030-30d5-8009-83a8c30103bf\"\r\n        },\r\n        \"strip_path\": true,\r\n        \"updated_at\": 1545521760\r\n    },\r\n    \"service\": {\r\n        \"connect_timeout\": 60000,\r\n        \"created_at\": 1549572086,\r\n        \"host\": \"orn.com\",\r\n        \"id\": \"a5bf08bd-c030-30d5-8009-83a8c30103bf\",\r\n        \"name\": \"orn\",\r\n        \"path\": \"\\/\",\r\n        \"port\": 80,\r\n        \"protocol\": \"http\",\r\n        \"read_timeout\": 60000,\r\n        \"retries\": 5,\r\n        \"updated_at\": 1549572086,\r\n        \"write_timeout\": 60000\r\n    },\r\n    \"latencies\": {\r\n        \"proxy\": 1644,\r\n        \"gateway\": 11,\r\n        \"request\": 1648\r\n    },\r\n    \"client_ip\": \"227.161.59.27\",\r\n    \"started_at\": 1544800610\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_docker}}/api/consumer",
+					"host": [
+						"{{url_docker}}"
+					],
+					"path": [
+						"api",
+						"consumer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE REQUEST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"request\": {\r\n        \"method\": \"GET\",\r\n        \"uri\": \"\\/\",\r\n        \"url\": \"http:\\/\\/wolf.com\",\r\n        \"size\": 61,\r\n        \"querystring\": [],\r\n        \"headers\": {\r\n            \"accept\": \"*\\/*\",\r\n            \"host\": \"wolf.com\",\r\n            \"user-agent\": \"curl\\/7.37.1\"\r\n        }\r\n    },\r\n    \"upstream_uri\": \"\\/\",\r\n    \"response\": {\r\n        \"status\": 500,\r\n        \"size\": 847,\r\n        \"headers\": {\r\n            \"Content-Length\": \"197\",\r\n            \"via\": \"gateway\\/1.3.0\",\r\n            \"Connection\": \"close\",\r\n            \"access-control-allow-credentials\": \"true\",\r\n            \"Content-Type\": \"application\\/json\",\r\n            \"server\": \"nginx\",\r\n            \"access-control-allow-origin\": \"*\"\r\n        }\r\n    },\r\n    \"authenticated_entity\": {\r\n        \"consumer_id\": {\r\n            \"uuid\": \"fdbb8ab9-53c2-35c3-b0dc-0433d64c0836\"\r\n        }\r\n    },\r\n    \"route\": {\r\n        \"created_at\": 1545521760,\r\n        \"hosts\": \"hilpert.com\",\r\n        \"id\": \"9bb5b399-23b4-3c5a-b92b-2febdbcfa4e4\",\r\n        \"methods\": [\r\n            \"GET\",\r\n            \"POST\",\r\n            \"PUT\",\r\n            \"DELETE\",\r\n            \"PATCH\",\r\n            \"OPTIONS\",\r\n            \"HEAD\"\r\n        ],\r\n        \"paths\": [\r\n            \"\\/\"\r\n        ],\r\n        \"preserve_host\": false,\r\n        \"protocols\": [\r\n            \"http\",\r\n            \"https\"\r\n        ],\r\n        \"regex_priority\": 0,\r\n        \"service\": {\r\n            \"id\": \"a5bf08bd-c030-30d5-8009-83a8c30103bf\"\r\n        },\r\n        \"strip_path\": true,\r\n        \"updated_at\": 1545521760\r\n    },\r\n    \"service\": {\r\n        \"connect_timeout\": 60000,\r\n        \"created_at\": 1549572086,\r\n        \"host\": \"orn.com\",\r\n        \"id\": \"a5bf08bd-c030-30d5-8009-83a8c30103bf\",\r\n        \"name\": \"orn\",\r\n        \"path\": \"\\/\",\r\n        \"port\": 80,\r\n        \"protocol\": \"http\",\r\n        \"read_timeout\": 60000,\r\n        \"retries\": 5,\r\n        \"updated_at\": 1549572086,\r\n        \"write_timeout\": 60000\r\n    },\r\n    \"latencies\": {\r\n        \"proxy\": 1644,\r\n        \"gateway\": 11,\r\n        \"request\": 1648\r\n    },\r\n    \"client_ip\": \"227.161.59.27\",\r\n    \"started_at\": 1544800610\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_docker}}/requests/create",
+					"host": [
+						"{{url_docker}}"
+					],
+					"path": [
+						"requests",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE GATEWAY SERVICE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"request\": {\r\n        \"method\": \"GET\",\r\n        \"uri\": \"\\/\",\r\n        \"url\": \"http:\\/\\/wolf.com\",\r\n        \"size\": 61,\r\n        \"querystring\": [],\r\n        \"headers\": {\r\n            \"accept\": \"*\\/*\",\r\n            \"host\": \"wolf.com\",\r\n            \"user-agent\": \"curl\\/7.37.1\"\r\n        }\r\n    },\r\n    \"upstream_uri\": \"\\/\",\r\n    \"response\": {\r\n        \"status\": 500,\r\n        \"size\": 847,\r\n        \"headers\": {\r\n            \"Content-Length\": \"197\",\r\n            \"via\": \"gateway\\/1.3.0\",\r\n            \"Connection\": \"close\",\r\n            \"access-control-allow-credentials\": \"true\",\r\n            \"Content-Type\": \"application\\/json\",\r\n            \"server\": \"nginx\",\r\n            \"access-control-allow-origin\": \"*\"\r\n        }\r\n    },\r\n    \"authenticated_entity\": {\r\n        \"consumer_id\": {\r\n            \"uuid\": \"fdbb8ab9-53c2-35c3-b0dc-0433d64c0836\"\r\n        }\r\n    },\r\n    \"route\": {\r\n        \"created_at\": 1545521760,\r\n        \"hosts\": \"hilpert.com\",\r\n        \"id\": \"9bb5b399-23b4-3c5a-b92b-2febdbcfa4e4\",\r\n        \"methods\": [\r\n            \"GET\",\r\n            \"POST\",\r\n            \"PUT\",\r\n            \"DELETE\",\r\n            \"PATCH\",\r\n            \"OPTIONS\",\r\n            \"HEAD\"\r\n        ],\r\n        \"paths\": [\r\n            \"\\/\"\r\n        ],\r\n        \"preserve_host\": false,\r\n        \"protocols\": [\r\n            \"http\",\r\n            \"https\"\r\n        ],\r\n        \"regex_priority\": 0,\r\n        \"service\": {\r\n            \"id\": \"a5bf08bd-c030-30d5-8009-83a8c30103be\"\r\n        },\r\n        \"strip_path\": true,\r\n        \"updated_at\": 1545521760\r\n    },\r\n    \"service\": {\r\n        \"connect_timeout\": 60000,\r\n        \"created_at\": 1549572086,\r\n        \"host\": \"orn.com\",\r\n        \"id\": \"a5bf08bd-c030-30d5-8009-83a8c30103ce\",\r\n        \"name\": \"orn\",\r\n        \"path\": \"\\/\",\r\n        \"port\": 80,\r\n        \"protocol\": \"http\",\r\n        \"read_timeout\": 60000,\r\n        \"retries\": 5,\r\n        \"updated_at\": 1549572086,\r\n        \"write_timeout\": 60000\r\n    },\r\n    \"latencies\": {\r\n        \"proxy\": 1644,\r\n        \"gateway\": 11,\r\n        \"request\": 1648\r\n    },\r\n    \"client_ip\": \"227.161.59.27\",\r\n    \"started_at\": 1544800610\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_docker}}/api/gatewayService",
+					"host": [
+						"{{url_docker}}"
+					],
+					"path": [
+						"api",
+						"gatewayService"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REQUESTS BY CONSUMER",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_docker}}/api/requests/export/consumer/22143d4c-c32a-3461-a31d-a5e56783698d",
+					"host": [
+						"{{url_docker}}"
+					],
+					"path": [
+						"api",
+						"requests",
+						"export",
+						"consumer",
+						"22143d4c-c32a-3461-a31d-a5e56783698d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REQUESTS BY SERVICE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_docker}}/api/requests/export/gatewayService/c3e86413-648a-3552-90c3-b13491ee07d6",
+					"host": [
+						"{{url_docker}}"
+					],
+					"path": [
+						"api",
+						"requests",
+						"export",
+						"gatewayService",
+						"c3e86413-648a-3552-90c3-b13491ee07d6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LATENCIES AVERAGE TIME BY SERVICE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_docker}}/api/requests/export/averageLatencies",
+					"host": [
+						"{{url_docker}}"
+					],
+					"path": [
+						"api",
+						"requests",
+						"export",
+						"averageLatencies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "READ FILE",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_docker}}/requests/readFile",
+					"host": [
+						"{{url_docker}}"
+					],
+					"path": [
+						"requests",
+						"readFile"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url_docker",
+			"value": "lhttp://ocalhost:80/api",
+			"type": "string"
+		},
+		{
+			"key": "url_local",
+			"value": "http://localhost:8000/api",
+			"type": "string"
+		}
+	]
+}
